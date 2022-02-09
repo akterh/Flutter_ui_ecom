@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Blue bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/18148936_0_ladies-bag-removebg-preview.png",
+    "price": 149,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "pink bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/female-pink-bag-on-desk-260nw-683094385-removebg-preview.png",
+    "price": 400,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "super bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/images-removebg-preview.png",
+    "price": 1700,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "Ladise bag",
+    "color": "0xFF989493",
+    "image": "assets/images/images__1_-removebg-preview.png",
+    "price": 1000,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "Blue bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/images__2_-removebg-preview.png",
+    "price": 1034,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "Blue bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/photo-1559563458-527698bf5295-removebg-preview.png",
+    "price": 1344,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "Blue bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/photo-1584917865442-de89df76afd3-removebg-preview.png",
+    "price": 156,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  },
+  {
+    "name": "Blue bag",
+    "color": "0xFF3D82AE",
+    "image": "assets/images/Wholesale-New-Designer-PU-Leather-Ladies-Bags-Women-Ladies-Handbag-Fashion-Lady-Handbags-removebg-preview.png",
+    "price": 1432,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "size": 12
+  }
+]

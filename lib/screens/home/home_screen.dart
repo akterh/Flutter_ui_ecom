@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project_2/repositories/product_repositories.dart';
+import 'package:test_project_2/screens/ui_elements/custom_app_bar.dart';
 import '../home/homeComponents/product_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,12 +14,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<String> categories = ["Jewellery", "Clothes", "Beauty", "Shoes", 'Bags'];
   int selectedIndex = 0;
+  // var currentIndex;
+  // late Color productColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: buildAppbar(),
+      appBar:const  CustomAppBar(),
       body: buildBodyItems(context),
     );
   }
@@ -31,7 +34,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           Text(
             "Women",
-            style: Theme.of(context)
+            style: Theme
+                .of(context)
                 .textTheme
                 .headline5
                 ?.copyWith(fontWeight: FontWeight.bold),
@@ -59,7 +63,8 @@ class _HomePageState extends State<HomePage> {
         } else if (snapshot.hasData) {
           var productResponse = snapshot.data! as List;
           print(productResponse[0].color);
-         
+          // productColor = int.parse(productResponse[currentIndex].color) as Color;
+
 
           return Expanded(
             child: GridView.builder(
@@ -69,17 +74,21 @@ class _HomePageState extends State<HomePage> {
                   crossAxisSpacing: 10,
                   childAspectRatio: 0.86,
                 ),
-                
+
                 itemCount: productResponse.length,
-                itemBuilder: (context, index) =>
-                
-                    ProductCard(
-                      name: productResponse[index].name,
-                      image: productResponse[index].image,
-                      price: productResponse[index].price.toString(),
-                      color: int.parse(productResponse[index].color),
-                      index: index,
-                    )),
+                itemBuilder: ((context, index) {
+                  // currentIndex= index;
+                  return ProductCard(
+                    name: productResponse[index].name,
+                    image: productResponse[index].image,
+                    price: productResponse[index].price.toString(),
+                    color: productResponse[index].color,
+                    index: index,
+                  );
+                }
+
+                )
+            ),
           );
         } else {
           return Container();
@@ -113,28 +122,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AppBar buildAppbar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white,
-      leading: const Icon(Icons.arrow_back, color: Colors.grey),
-      // ignore: prefer_const_literals_to_create_immutables
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.search, color: Colors.grey),
-          onPressed: () {},
-        ),
-        // const SizedBox(
-        //   width: 10,
-        // ),
-        IconButton(
-          icon: const Icon(Icons.shopping_cart_outlined, color: Colors.grey),
-          onPressed: () {},
-        ),
-        const SizedBox(
-          width: 10,
-        )
-      ],
-    );
-  }
 }

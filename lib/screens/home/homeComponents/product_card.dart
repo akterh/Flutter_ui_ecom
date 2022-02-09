@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_2/screens/productDetails/product_details.dart';
 class ProductCard extends StatelessWidget {
  final String? name;
  final String? price;
  final String? image;
- final int? color;
+ final String? color;
  final int? index;
  const ProductCard({Key? key,this.name,this.color,this.image,this.price,this.index }) : super(key: key);
 
@@ -13,6 +14,15 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         print('tapped$index');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>ProductDetails(
+                // product: products[index],
+                // color: Color(int.parse(color!)),
+                index: index,
+              ),
+            ));
 
       },
       child: Column(
@@ -20,7 +30,7 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Card(
-              color: Color(color!),
+              color: Color(int.parse(color!)),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
