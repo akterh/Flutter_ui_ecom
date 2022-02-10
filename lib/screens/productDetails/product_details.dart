@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:test_project_2/repositories/product_repositories.dart';
 import 'package:test_project_2/screens/productDetails/components/color_and_size.dart';
 import 'package:test_project_2/screens/productDetails/components/favorite_and_quantity.dart';
+import 'package:test_project_2/screens/productDetails/components/image_with_price.dart';
 import 'package:test_project_2/screens/ui_elements/custom_app_bar.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -67,10 +68,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                               const SizedBox(
                                 height: 50,
                               ),
-                              ItemCountrAndFavorite(color: Color(int.parse(
-                                  productDetailsResponse[
-                                  widget.index!]
-                                      .color)),),
+                              ItemCountrAndFavorite(
+                                color: Color(int.parse(
+                                    productDetailsResponse[widget.index!]
+                                        .color)),
+                              ),
                               const SizedBox(
                                 height: 50,
                               ),
@@ -113,6 +115,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                             ],
                           ),
                         ),
+                      ),
+                      ImageWithPrice(
+                        price: "\$" +
+                            productDetailsResponse[widget.index!]
+                                .price
+                                .toString(),
+                        image: productDetailsResponse[widget.index!].image,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Text(productDetailsResponse[widget.index!].name,style: const TextStyle(color: Colors.white,fontSize: 25),),
                       )
                     ],
                   )),
