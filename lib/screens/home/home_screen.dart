@@ -12,7 +12,7 @@ import '../home/homeComponents/category_items.dart';
 // }
 
 class HomePage extends StatelessWidget {
-  List<String> categories = ["Jewellery", "Clothes", "Beauty", "Shoes", 'Bags'];
+
 
   // var currentIndex;
   // late Color productColor;
@@ -40,13 +40,8 @@ class HomePage extends StatelessWidget {
                 .headline5
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            height: 30,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (ctx, index) => CategoryItems(index: index,categories: categories,)),
-          ),
+          CategoryItems(),
+
           buildProductView()
         ],
       ),
