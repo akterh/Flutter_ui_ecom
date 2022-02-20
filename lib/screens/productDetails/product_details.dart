@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project_2/repositories/product_repositories.dart';
 import 'package:test_project_2/screens/productDetails/components/color_and_size.dart';
@@ -7,8 +6,10 @@ import 'package:test_project_2/screens/productDetails/components/image_with_pric
 import 'package:test_project_2/screens/ui_elements/custom_app_bar.dart';
 
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({Key? key, this.index}) : super(key: key);
-  final int? index;
+  static const routeName = '/product-details';
+
+  // const ProductDetails( this.index);
+  // final int? index;
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -20,6 +21,8 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final routeArgs = ModalRoute.of(context)?.settings.arguments as Map<String,int?>;
+    final index = routeArgs['index'];
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
         future: ProductRepository().getProductDetails(),
@@ -31,10 +34,9 @@ class _ProductDetailsState extends State<ProductDetails> {
             var productDetailsResponse = snapshot.data! as List;
             return Scaffold(
               backgroundColor:
-                  Color(int.parse(productDetailsResponse[widget.index!].color)),
+                  Color(int.parse(productDetailsResponse[index!].color)),
               appBar: CustomAppBar(
-                  color: Color(
-                      int.parse(productDetailsResponse[widget.index!].color))),
+                  color: Color(int.parse(productDetailsResponse[index].color))),
               body: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Stack(
@@ -55,7 +57,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 height: 80,
                               ),
                               ColorAndSize(
-                                size: productDetailsResponse[widget.index!]
+                                size: productDetailsResponse[index]
                                         .size
                                         .toString() +
                                     "cm",
@@ -63,15 +65,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                               const SizedBox(
                                 height: 50,
                               ),
-                              Text(productDetailsResponse[widget.index!]
-                                  .description),
+                              Text(productDetailsResponse[index].description),
                               const SizedBox(
                                 height: 50,
                               ),
                               ItemCountrAndFavorite(
                                 color: Color(int.parse(
-                                    productDetailsResponse[widget.index!]
-                                        .color)),
+                                    productDetailsResponse[index].color)),
                               ),
                               const SizedBox(
                                 height: 50,
@@ -102,8 +102,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     child: const Text('BUY NOW'),
                                     style: ElevatedButton.styleFrom(
                                         primary: Color(int.parse(
-                                            productDetailsResponse[
-                                                    widget.index!]
+                                            productDetailsResponse[index]
                                                 .color)),
                                         fixedSize: Size(size.width * .65, 50),
                                         shape: RoundedRectangleBorder(
@@ -118,14 +117,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                       ImageWithPrice(
                         price: "\$" +
-                            productDetailsResponse[widget.index!]
-                                .price
-                                .toString(),
-                        image: productDetailsResponse[widget.index!].image,
+                            productDetailsResponse[index].price.toString(),
+                        image: productDetailsResponse[index].image,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(productDetailsResponse[widget.index!].name,style: const TextStyle(color: Colors.white,fontSize: 25),),
+                        child: Text(
+                          productDetailsResponse[index].name,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 25),
+                        ),
                       )
                     ],
                   )),

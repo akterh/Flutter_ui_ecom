@@ -1,19 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project_2/repositories/product_repositories.dart';
 import 'package:test_project_2/screens/ui_elements/custom_app_bar.dart';
 import '../home/homeComponents/product_card.dart';
+import '../home/homeComponents/category_items.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+// class HomePage extends StatefulWidget {
+//   const HomePage({Key? key}) : super(key: key);
+//
+//   @override
+//   _HomePageState createState() => _HomePageState();
+// }
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   List<String> categories = ["Jewellery", "Clothes", "Beauty", "Shoes", 'Bags'];
-  int selectedIndex = 0;
+
   // var currentIndex;
   // late Color productColor;
 
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                itemBuilder: (ctx, index) => buildCategoryItem(index)),
+                itemBuilder: (ctx, index) => CategoryItems(index: index,categories: categories,)),
           ),
           buildProductView()
         ],
@@ -96,30 +96,9 @@ class _HomePageState extends State<HomePage> {
       }),
     );
   }
-
-  Widget buildCategoryItem(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(25, 5, 25, 5),
-            child: Text(
-              categories[index],
-              style: const TextStyle(color: Colors.grey),
-            ),
-          ),
-          Container(
-              height: 3,
-              width: 50,
-              color: selectedIndex == index ? Colors.grey : Colors.grey[200])
-        ],
-      ),
-    );
-  }
+  //
+  // Widget buildCategoryItem(int index) {
+  //
+  // }
 
 }

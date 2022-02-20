@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_2/screens/productDetails/product_details.dart';
 import 'screens/home/home_screen.dart';
 
 void main() {
@@ -19,7 +20,13 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
 
       ),
-      home: const HomePage(),
+      // home: const HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/':(context)=> HomePage(),
+        ProductDetails.routeName:(ctx)=> ProductDetails()
+
+      },
     );
   }
 }
